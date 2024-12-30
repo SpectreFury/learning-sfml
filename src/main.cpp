@@ -3,19 +3,6 @@
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 800;
 
-void checkBounds(sf::CircleShape &ball, sf::RenderWindow &window, sf::Vector2f velocity)
-{
-    // Collision detection with window boundaries
-    if (ball.getPosition().x + ball.getRadius() * 2 > window.getSize().x || ball.getPosition().x < 0)
-    {
-        velocity.x = -velocity.x; // Reverse x velocity
-    }
-    if (ball.getPosition().y + ball.getRadius() * 2 > window.getSize().y || ball.getPosition().y < 0)
-    {
-        velocity.y = -velocity.y; // Reverse y velocity
-    }
-}
-
 int main()
 {
     sf::RenderWindow window(sf::VideoMode({SCREEN_WIDTH, SCREEN_HEIGHT}), "My window");
@@ -35,7 +22,6 @@ int main()
                 window.close();
         }
         // Update
-
         // Collision detection with window boundaries
         if (ball.getPosition().x + ball.getRadius() * 2 > window.getSize().x || ball.getPosition().x < 0)
         {
@@ -43,7 +29,7 @@ int main()
         }
         if (ball.getPosition().y + ball.getRadius() * 2 > window.getSize().y || ball.getPosition().y < 0)
         {
-            velocity.y = -velocity.y;// Reverse y velocity
+            velocity.y = -velocity.y; // Reverse y velocity
         }
 
         velocity.y += gravity;
